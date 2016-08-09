@@ -23,27 +23,23 @@ class Main extends PluginBase implements Listener{
         $message = $e->getMessage();       
         $ip = explode('.', $message);
         $il = explode('.', $message);
-if(!$player->hasPermission("antiadvert")){
-        if(sizeof($ip) >= 4){
-            if(preg_match('/[0-9]+/', $ip[1])){
-	               $e->setMessage("Play only on this server! It is the best!");
-                
+	    if(!$player->hasPermission("antiadvert")){
+            if(sizeof($ip) >= 4){
+            	if(preg_match('/[0-9]+/', $ip[1])){
+                    $e->setMessage("Play only on this server! It is the best!");
                  }
-        }
-        elseif(sizeof($il) >= 4){
-            if(preg_match('/[0-9]+/', $il[1])){
-	               $e->setMessage("Play only on this server! It is the best!");
-                
+            }elseif(sizeof($il) >= 4){
+                if(preg_match('/[0-9]+/', $il[1])){
+                    $e->setMessage("Play only on this server! It is the best!");
                 }
-        }
-        foreach($this->piar as $end){
-            if (strpos($message, $end) !== false){
-	               $e->setMessage("Play only on this server! It is the best!");
-                
-              }
+            }
+            foreach($this->piar as $end){
+                if(strpos($message, $end) !== false){
+                    $e->setMessage("Play only on this server! It is the best!");
+                }
+            }
         }
     }
-}
 
     public function onDisable(){
         $this->getLogger()->info("AntiAdvert by MasterWolf disabled :D");
